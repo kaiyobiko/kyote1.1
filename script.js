@@ -13,63 +13,105 @@ document.getElementById(id).value
 
 
 
+
+let currentTotal = 0;
+
+
+
+
 function showResult(){
 
 
-let english =
+let scores = [
+
+
+{
+name:"英語",
+value:
 num("c_eng")
 +
-num("d_eng");
+num("d_eng")
+},
 
 
-
-let math =
+{
+name:"数学",
+value:
 num("c_math1")
 +
 num("c_math2")
 +
-num("d_math");
+num("d_math")
+},
 
 
-
-let japanese =
+{
+name:"国語",
+value:
 num("c_jap")
 +
-num("d_jap");
+num("d_jap")
+},
 
 
-
-let science =
+{
+name:"理科①",
+value:
 num("c_sci1")
 +
-num("c_sci2");
+num("d_sci1")
+},
 
 
+{
+name:"理科②",
+value:
+num("c_sci2")
++
+num("d_sci2")
+},
 
-let society =
+
+{
+name:"社会①",
+value:
 num("c_soc1")
 +
-num("c_soc2");
+num("d_soc1")
+},
 
 
-
-let info =
-num("c_info");
-
-
-
-let total =
-english
+{
+name:"社会②",
+value:
+num("c_soc2")
 +
-math
-+
-japanese
-+
-science
-+
-society
-+
-info;
+num("d_soc2")
+},
+
+
+{
+name:"情報",
+value:
+num("c_info")
+}
+
+
+];
+
+
+
+
+// 合計点計算
+
+currentTotal = 0;
+
+
+scores.forEach(function(item){
+
+currentTotal += item.value;
+
+});
 
 
 
@@ -77,9 +119,28 @@ document.getElementById("total")
 .innerHTML =
 "総合得点　"
 +
-total;
+currentTotal
++
+"点";
 
 
+
+// 点数順に並び替え
+
+scores.sort(
+
+function(a,b){
+
+return b.value-a.value;
+
+}
+
+);
+
+
+
+
+// 円グラフ
 
 if(chart){
 
@@ -100,39 +161,72 @@ type:"pie",
 
 data:{
 
-labels:[
+labels:
 
-"英語",
-"数学",
-"国語",
-"理科",
-"社会",
-"情報"
+scores.map(function(item){
 
-],
+return item.name;
+
+}),
+
 
 datasets:[{
 
-data:[
+data:
 
-english,
-math,
-japanese,
-science,
-society,
-info
+scores.map(function(item){
 
-]
+return item.value;
 
+})
 
 }]
 
 }
 
-
 }
 
 );
+
+
+}
+
+
+
+
+function showRate(){
+
+
+let minimum =
+num("minimum");
+
+
+
+if(minimum<=0){
+
+document.getElementById("rate")
+.innerHTML =
+"合格最低点を入力してください";
+
+return;
+
+}
+
+
+
+let rate =
+(currentTotal / minimum)
+*100;
+
+
+
+document.getElementById("rate")
+.innerHTML =
+"得点率　"
++
+rate.toFixed(1)
++
+"%";
 
 
 }
@@ -161,6 +255,10 @@ document.getElementById("total")
 .innerHTML="";
 
 
+document.getElementById("rate")
+.innerHTML="";
+
+
 
 if(chart){
 
@@ -169,6 +267,9 @@ chart.destroy();
 chart=null;
 
 }
+
+
+currentTotal=0;
 
 
 }
