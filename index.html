@@ -7,9 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>
-得点シミュレーター
-</title>
+<title>得点シミュレーター</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -21,9 +19,7 @@
 <body>
 
 
-<h1>
-得点シミュレーター
-</h1>
+<h1>得点シミュレーター</h1>
 
 
 <p class="notice">
@@ -35,55 +31,62 @@
 
 
 
-<h2>
-共通テスト
-</h2>
+<h2>共通テスト</h2>
 
 
 <div class="box">
 
 
-<label>英語
+<label>
+英語
 <input id="c_eng" type="number" inputmode="numeric">
 </label>
 
 
-<label>数学①
+<label>
+数学①
 <input id="c_math1" type="number" inputmode="numeric">
 </label>
 
 
-<label>数学②
+<label>
+数学②
 <input id="c_math2" type="number" inputmode="numeric">
 </label>
 
 
-<label>国語
+<label>
+国語
 <input id="c_jap" type="number" inputmode="numeric">
 </label>
 
 
-<label>理科①
+<label>
+理科①
 <input id="c_sci1" type="number" inputmode="numeric">
 </label>
 
 
-<label>理科②
+<label>
+理科②
 <input id="c_sci2" type="number" inputmode="numeric">
 </label>
 
 
-<label>社会①
+<label>
+社会①
 <input id="c_soc1" type="number" inputmode="numeric">
 </label>
 
 
-<label>社会②
+<label>
+社会②
 <input id="c_soc2" type="number" inputmode="numeric">
 </label>
 
 
-<label>情報
+<label>
+情報
 <input id="c_info" type="number" inputmode="numeric">
 </label>
 
@@ -93,46 +96,50 @@
 
 
 
-
-<h2>
-個別試験
-</h2>
+<h2>個別試験</h2>
 
 
 <div class="box">
 
 
-<label>英語
+<label>
+英語
 <input id="d_eng" type="number" inputmode="numeric">
 </label>
 
 
-<label>数学
+<label>
+数学
 <input id="d_math" type="number" inputmode="numeric">
 </label>
 
 
-<label>国語
+<label>
+国語
 <input id="d_jap" type="number" inputmode="numeric">
 </label>
 
 
-<label>理科①
+<label>
+理科①
 <input id="d_sci1" type="number" inputmode="numeric">
 </label>
 
 
-<label>理科②
+<label>
+理科②
 <input id="d_sci2" type="number" inputmode="numeric">
 </label>
 
 
-<label>社会①
+<label>
+社会①
 <input id="d_soc1" type="number" inputmode="numeric">
 </label>
 
 
-<label>社会②
+<label>
+社会②
 <input id="d_soc2" type="number" inputmode="numeric">
 </label>
 
@@ -141,13 +148,45 @@
 
 
 
-
 <button onclick="showResult()">
+
 結果を見る
+
 </button>
 
 
-<button class="reset" onclick="resetForm()">
+
+<h2 id="total"></h2>
+
+
+<div class="box">
+
+<label>
+
+合格最低点
+
+<input id="minimum"
+type="number"
+inputmode="numeric">
+
+</label>
+
+
+<button onclick="showRate()">
+
+得点率を見る
+
+</button>
+
+
+<h2 id="rate"></h2>
+
+
+</div>
+
+
+
+<button onclick="resetForm()">
 
 リセット
 
@@ -155,12 +194,7 @@
 
 
 
-
-<h2 id="total"></h2>
-
-
 <canvas id="chart"></canvas>
-
 
 
 
