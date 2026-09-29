@@ -203,8 +203,7 @@ return;
 
 
 let rate =
-currentTotal / minimum * 100;
-
+minimum / currentTotal * 100;
 
 
 document.getElementById("rate")
