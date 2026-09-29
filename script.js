@@ -1,5 +1,7 @@
 let chart = null;
 
+let currentTotal = 0;
+
 
 
 function num(id){
@@ -13,16 +15,10 @@ document.getElementById(id).value
 
 
 
-
-let currentTotal = 0;
-
-
-
-
 function showResult(){
 
 
-let scores = [
+let scores=[
 
 
 {
@@ -96,15 +92,12 @@ value:
 num("c_info")
 }
 
-
 ];
 
 
 
 
-// 合計点計算
-
-currentTotal = 0;
+currentTotal=0;
 
 
 scores.forEach(function(item){
@@ -116,7 +109,8 @@ currentTotal += item.value;
 
 
 document.getElementById("total")
-.innerHTML =
+.innerHTML=
+
 "総合得点　"
 +
 currentTotal
@@ -125,22 +119,16 @@ currentTotal
 
 
 
-// 点数順に並び替え
 
-scores.sort(
 
-function(a,b){
+scores.sort(function(a,b){
 
 return b.value-a.value;
 
-}
-
-);
+});
 
 
 
-
-// 円グラフ
 
 if(chart){
 
@@ -150,8 +138,7 @@ chart.destroy();
 
 
 
-chart =
-new Chart(
+chart = new Chart(
 
 document.getElementById("chart"),
 
@@ -205,7 +192,8 @@ num("minimum");
 if(minimum<=0){
 
 document.getElementById("rate")
-.innerHTML =
+.innerHTML=
+
 "合格最低点を入力してください";
 
 return;
@@ -215,19 +203,18 @@ return;
 
 
 let rate =
-(currentTotal / minimum)
-*100;
+currentTotal / minimum * 100;
 
 
 
 document.getElementById("rate")
-.innerHTML =
+.innerHTML=
+
 "得点率　"
 +
 rate.toFixed(1)
 +
 "%";
-
 
 }
 
@@ -239,15 +226,11 @@ function resetForm(){
 
 document
 .querySelectorAll("input")
-.forEach(
-
-function(input){
+.forEach(function(input){
 
 input.value="";
 
-}
-
-);
+});
 
 
 
