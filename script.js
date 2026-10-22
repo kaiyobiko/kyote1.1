@@ -26,6 +26,8 @@ name:"英語",
 value:
 num("c_eng")
 +
+num("c_listening")
++
 num("d_eng")
 },
 
@@ -92,8 +94,8 @@ value:
 num("c_info")
 }
 
-];
 
+];
 
 
 
@@ -119,14 +121,11 @@ currentTotal
 
 
 
-
-
 scores.sort(function(a,b){
 
 return b.value-a.value;
 
 });
-
 
 
 
@@ -202,8 +201,22 @@ return;
 
 
 
+if(currentTotal<=0){
+
+document.getElementById("rate")
+.innerHTML=
+
+"先に「結果を見る」を押してください";
+
+return;
+
+}
+
+
+
 let rate =
 minimum / currentTotal * 100;
+
 
 
 document.getElementById("rate")
