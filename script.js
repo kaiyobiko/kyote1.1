@@ -106,6 +106,8 @@ num("d_other")
 
 
 
+/* 総合得点を計算 */
+
 currentTotal=0;
 
 
@@ -128,6 +130,8 @@ currentTotal
 
 
 
+/* 点数の大きい順に並べる */
+
 scores.sort(function(a,b){
 
 return b.value-a.value;
@@ -135,6 +139,8 @@ return b.value-a.value;
 });
 
 
+
+/* 以前の円グラフを削除 */
 
 if(chart){
 
@@ -144,6 +150,8 @@ chart.destroy();
 
 
 
+/* 円グラフを作成 */
+
 chart = new Chart(
 
 document.getElementById("chart"),
@@ -152,13 +160,28 @@ document.getElementById("chart"),
 
 type:"pie",
 
+
 data:{
+
+/*
+科目名と点数を表示
+例：
+数学　500点
+英語　300点
+その他　50点
+*/
 
 labels:
 
 scores.map(function(item){
 
-return item.name;
+return item.name
++
+"　"
++
+item.value
++
+"点";
 
 }),
 
