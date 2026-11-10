@@ -92,6 +92,13 @@ num("d_soc2")
 name:"情報",
 value:
 num("c_info")
+},
+
+
+{
+name:"その他",
+value:
+num("d_other")
 }
 
 
